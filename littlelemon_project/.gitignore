@@ -1,0 +1,12 @@
+# Ignore the virtual environment
+"Little Lemon"/
+.venv/
+venv/
+ENV/
+
+# Ignore the local database
+db.sqlite3
+
+# Ignore compiled Python files
+*.pyc
+__pycache__/
