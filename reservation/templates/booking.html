@@ -1,25 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Little Lemon Table Booking</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Lemon - Book a Table</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .navbar-brand { font-weight: bold; color: #495E57 !important; }
+        .btn-lemon { background-color: #F4CE14; color: #333333; font-weight: bold; }
+        .btn-lemon:hover { background-color: #dbb80f; }
+        .card { border-radius: 15px; }
+    </style> 
 </head>
 <body>
-    <h1>Book a Table at Little Lemon</h1>
-    
-    <!-- The form sends data back to the server securely -->
-    <form method="POST" action="">
-        {% csrf_token %} <!-- Django security token required for forms -->
-        
-        <label for="first_name">Your Name:</label><br>
-        <input type="text" id="first_name" name="first_name" required><br><br>
 
-        <label for="reservation_date">Reservation Date:</label><br>
-        <input type="date" id="reservation_date" name="reservation_date" required><br><br>
+    <!-- Simple Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-5">
+        <div class="container">
+            <a class="navbar-brand" href="#">🍋 Little Lemon Restaurant</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link btn btn-sm btn-light me-2" href="/bookings-list/">View All Bookings</a>
+            </div>
+        </div>
+    </nav>
 
-        <label for="seats">Number of Seats:</label><br>
-        <input type="number" id="seats" name="seats" min="1" max="10" required><br><br>
+    <!-- Booking Form Card Layout -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow border-0 p-4">
+                    <h2 class="text-center mb-4" style="color: #495E57;">Table Reservation</h2>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="first_name" class="form-label fw-semibold">Your Name</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" required placeholder="Enter full name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="reservation_date" class="form-label fw-semibold">Reservation Date</label>
+                            <input type="date" class="form-control" id="reservation_date" name="reservation_date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="seats" class="form-label fw-semibold">Number of Seats</label>
+                            <input type="number" class="form-control" id="seats" name="seats" min="1" max="10" required placeholder="1-10 guests">
+                        </div>
+                        <button type="submit" class="btn btn-lemon w-100 py-2 mt-3 shadow-sm">Confirm Booking</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <button type="submit">Submit Reservation</button>
-    </form>
 </body>
 </html>
