@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>All Reservations</title></head>
+<body>
+    <h1>Current Table Reservations</h1>
+    <ul>
+        {% for booking in bookings %}
+        <li><strong>{{ booking.first_name }}</strong> — Date: {{ booking.reservation_date }} ({{ booking.seats }} seats)</li>
+        {% empty %}
+        <li>No reservations yet!</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <a href="/booking/">Book Another Table</a>
+</body>
+</html>
